@@ -1,0 +1,92 @@
+// --- app.js ---
+// Crea selects automáticos según el cast.json
+// y permite elegir concursantes manualmente.
+
+let allData = {};
+let selectedCast = [];
+
+function el(q){ return document.querySelector(q); }
+function create(tag, props = {}) {
+  const node = document.createElement(tag);
+  Object.entries(props).forEach(([k, v]) => node[k] = v);
+  return node;
+}
+
+async function init() {
+  try {
+    const res = await fetch('data/cast.json');
+    if (!res.ok) throw new Error('No se pudo cargar data/cast.json');
+    allData = await res.json();
+    renderEditionSelects(allData);
+  } catch (err) {
+    el('#results').innerText = 'Error: ' + err.message;
+  }
+}
+
+function renderEditionSelects(data) {
+  const container = el('#editionsContainer');
+  container.innerHTML = '';
+
+  Object.keys(data).forEach(edition => {
+    const block = create('div', { className: 'edition-block' });
+    const label = create('label', { innerText: edition });
+    const select = create('select', { id: 'select_' + edition });
+
+    const emptyOpt = create('option', { value: '' });
+    emptyOpt.innerText = '-- (sin seleccionar) --';
+    select.appendChild(emptyOpt);
+
+    data[edition].forEach(person => {
+      const opt = create('option', { value: person.name, innerText: person.name });
+      select.appendChild(opt);
+    });
+
+    block.appendChild(label);
+    block.appendChild(select);
+    container.appendChild(block);
+  });
+}
+
+function loadSelectedCast() {
+  selectedCast = [];
+  Object.keys(allData).forEach(edition => {
+    const val = el('#select_' + edition).value;
+    if (val) selectedCast.push({ name: val, edition });
+  });
+
+  if (selectedCast.length === 0) {
+    el('#results').innerText = 'No has seleccionado concursantes.';
+    return;
+  }
+
+  el('#results').innerHTML =
+    '<strong>Concursantes seleccionados:</strong><br>' +
+    selectedCast.map(c => `${c.name} (${c.edition})`).join('<br>');
+}
+
+function simulateWeek() {
+  if (selectedCast.length === 0) {
+    alert('Primero selecciona y carga concursantes.');
+    return;
+  }
+  const top = selectedCast[Math.floor(Math.random() * selectedCast.length)];
+  const expelled = selectedCast[Math.floor(Math.random() * selectedCast.length)];
+  el('#results').innerHTML = `<strong>Resultados:</strong><br>
+  Ganador del reto: ${top.name} (${top.edition})<br>
+  Expulsado/a: ${expelled.name} (${expelled.edition})`;
+}
+
+function clearSelection() {
+  Object.keys(allData).forEach(edition => {
+    el('#select_' + edition).value = '';
+  });
+  selectedCast = [];
+  el('#results').innerText = '';
+}
+
+document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('click', e => {
+  if (e.target.id === 'loadCast') loadSelectedCast();
+  if (e.target.id === 'simulateWeek') simulateWeek();
+  if (e.target.id === 'clearSelection') clearSelection();
+});

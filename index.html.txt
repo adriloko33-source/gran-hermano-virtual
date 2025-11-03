@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gran Hermano Virtual</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fafafa;
+    }
+    h1 { color: #b30000; }
+    .edition-block {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      background: #fff;
+    }
+    label { font-weight: bold; display: block; margin-bottom: 6px; }
+    select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .controls { margin: 20px 0; }
+    button {
+      padding: 8px 12px;
+      margin-right: 8px;
+      cursor: pointer;
+      border-radius: 4px;
+      border: none;
+      background: #b30000;
+      color: white;
+      font-weight: bold;
+    }
+    #results {
+      background: #fff3f3;
+      border: 1px solid #e0b4b4;
+      padding: 10px;
+      border-radius: 6px;
+      min-height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gran Hermano Virtual</h1>
+  <p>Selecciona un concursante de cada edición y simula una semana del reality.</p>
+
+  <div id="editionsContainer">
+    <!-- Aquí aparecerán los selects automáticamente -->
+  </div>
+
+  <div class="controls">
+    <button id="loadCast">Cargar concursantes seleccionados</button>
+    <button id="simulateWeek">Simular semana</button>
+    <button id="clearSelection">Limpiar selección</button>
+  </div>
+
+  <div id="results"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
