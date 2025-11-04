@@ -1,3 +1,12 @@
+let allData = {};
+
+fetch('cast.json')
+  .then(response => response.json())
+  .then(data => {
+    allData = data;
+    cargarSelects(); // llama a tu función que llena los menús de concursantes
+  })
+  .catch(error => console.error('Error al cargar cast.json:', error));
 // app.js - Versión final: fotos + historial + expulsado desaparece (simulación aleatoria)
 
 // --- Datos ---
@@ -347,3 +356,4 @@ document.addEventListener('click', (e) => {
   }
   if (e.target.id === 'resetHistory') resetAllHistory();
 });
+
