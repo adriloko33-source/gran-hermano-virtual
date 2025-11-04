@@ -1,0 +1,24 @@
+{
+  "GH11": [
+    {"name": "Nagore", "photo": "images/Nagore.jpg"},
+    {"name": "Angel", "photo": "images/Angel.jpg"},
+    {"name": "Indhira", "photo": "images/Indhira.jpg"},
+    {"name": "Arturo", "photo": "images/Arturo.jpg"},
+    {"name": "Hans", "photo": "images/Hans.jpg"},
+    {"name": "Carolina Sobe", "photo": "images/CarolinaSobe.jpg"},
+    {"name": "Carol", "photo": "images/Carol.jpg"},
+    {"name": "Gerardo", "photo": "images/Gerardo.jpg"},
+    {"name": "Siscu", "photo": "images/Siscu.jpg"},
+    {"name": "Saray", "photo": "images/Saray.jpg"},
+    {"name": "Pilarita", "photo": "images/Pilarita.jpg"},
+    {"name": "Angela", "photo": "images/Angela.jpg"},
+    {"name": "Lis", "photo": "images/Lis.jpg"},
+    {"name": "Juan", "photo": "images/Juan.jpg"},
+    {"name": "Melani", "photo": "images/Melani.jpg"},
+    {"name": "Toscano", "photo": "images/Toscano.jpg"},
+    {"name": "Tatiana", "photo": "images/Tatiana.jpg"},
+    {"name": "Laura", "photo": "images/Laura.jpg"},
+    {"name": "Gonzalo", "photo": "images/Gonzalo.jpg"},
+    {"name": "Rebeca", "photo": "images/Rebeca.jpg"}
+  ]
+}
