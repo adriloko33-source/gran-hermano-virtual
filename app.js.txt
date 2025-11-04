@@ -1,4 +1,3 @@
-let allData = {};
 
 fetch('cast.json')
   .then(response => response.json())
@@ -356,4 +355,5 @@ document.addEventListener('click', (e) => {
   }
   if (e.target.id === 'resetHistory') resetAllHistory();
 });
+
 
